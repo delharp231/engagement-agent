@@ -1,4 +1,4 @@
-# LinkedIn Engagement Agent
+# Engagement Agent
 
 An automated agent that finds fresh, on-topic LinkedIn posts worth commenting on and emails a curated shortlist — each with a suggested **angle** — so an operator spends ten minutes engaging instead of an hour hunting. The human still writes and posts every comment; the agent only does the discovery and the strategic prep.
 
