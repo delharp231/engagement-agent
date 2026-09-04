@@ -1,0 +1,9 @@
+# Secrets and per-user config — never commit
+config.ps1
+
+# Runtime artifacts (personal + third-party data) — never commit
+runtime/
+*.log
+today.json
+outbox-*.txt
+outbox-*.html

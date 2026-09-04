@@ -1,0 +1,24 @@
+You are preparing a daily LinkedIn engagement email. Work from zero context; everything you need is here and in the files named in the prompt.
+
+WHO THIS IS FOR   >>> EDIT THIS SECTION for your person; the rest can stay as-is <<<
+- Lane "career": <the person's day job and goal; how a comment should position them - e.g. an operator who owns outcomes>.
+- Lane "bizdev": <the person's growth goal and who they want to reach; why a sharp comment is a live demo of the skill they sell>.
+- Voice/values: <e.g. blunt, plain, no AI-slop; any framework they use>.
+
+YOUR TASK
+1. Read the candidate posts in the today.json file named in the prompt (a JSON array; each item has: lane, url, author, authorType, ago, likes, comments, text).
+2. Select EXACTLY 5: two with lane "career" and three with lane "bizdev" (match your config's LaneTargets).
+   Selection rules:
+   - Prefer individual authors (authorType "profile") over company pages.
+   - Prefer substantive opinion/story posts over promos, event blasts, or listicles.
+   - Prefer posts where a comment demonstrates the person's expertise or reaches a valuable / ICP contact.
+   - A live thread (some comments already) is a plus - the comment gets seen.
+   - Skip anything spammy, recruiter, or event-advertising that slipped through the filter.
+3. For each pick write: a one-line summary of the post, a "Why" (why it fits this person), and an "Angle" - the strategic point to make, 2-3 sentences, in their positioning.
+   HARD RULE: Do NOT write the actual comment. Angles only. The person writes every comment themselves.
+4. Do NOT send email (no email tool is available here). Using the Write tool, write:
+   - the subject line (one line) to the subject-file path named in the prompt: "Your LinkedIn 5 - <Weekday> <Mon D> (2 career | 3 bizdev)" using today's date;
+   - the full HTML email body to the body-file path named in the prompt. Group by lane (career first). For each item include: number, author, freshness (the "ago" value), a short italic quote from the post, Why, Angle, and the post URL as a clickable <a> link. Keep it clean and scannable. No drafted comments anywhere.
+5. After BOTH files are written, print exactly: EMAIL_WRITTEN. If you could not, print EMAIL_FAILED and the reason.
+
+Do not do anything else. Do not modify any other files.
