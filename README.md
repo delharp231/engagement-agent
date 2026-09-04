@@ -51,6 +51,8 @@ flowchart LR
 
 ~15 minutes. See **[SETUP.md](SETUP.md)**: create a free Apify account, generate a Claude token, create a Gmail app password, copy `config.example.ps1` → `config.ps1`, run `scripts/register-task.ps1`.
 
+**Want your own, on your topics?** Hand **[recreate-with-claude.md](recreate-with-claude.md)** to Claude Code — it's a ready-to-paste prompt that walks you through the whole setup for your two lanes.
+
 ## The code (for review)
 
 Plain PowerShell plus one text brief — quick to read through:
