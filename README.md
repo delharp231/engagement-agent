@@ -51,26 +51,13 @@ flowchart LR
 
 ~15 minutes. See **[SETUP.md](SETUP.md)**: create a free Apify account, generate a Claude token, create a Gmail app password, copy `config.example.ps1` → `config.ps1`, run `scripts/register-task.ps1`.
 
-## Considerations before company adoption
+## The code (for review)
 
-Read this honestly, because a legal/security reviewer will ask:
+Plain PowerShell plus one text brief — quick to read through:
 
-- **LinkedIn Terms of Service.** This reads *public* posts via a third-party API using a **logged-out** posture — the most legally defensible mode (cf. *hiQ v. LinkedIn*), and it never uses or automates a real LinkedIn account, so no individual's account is at ban risk. **However**, automated collection still runs against LinkedIn's User Agreement in principle, and LinkedIn pursues scraping vendors aggressively (it shut down Proxycurl in 2025). A company should get its own compliance read before adopting at scale, and consider LinkedIn's official Marketing/Community APIs if a fully sanctioned path is required.
-- **Third-party data.** The agent handles other people's *public* post data transiently to choose targets. It is not stored or redistributed by this repo; all runtime data files are git-ignored.
-- **Human-in-the-loop by design.** It never posts, comments, connects, or messages. It only suggests; a person writes and posts everything.
-- **Dependencies.** Requires a Claude subscription (for the curation token, which expires periodically and must be refreshed) and a machine that is on at run time.
-
-## Repo layout
-
-```
-linkedin-engagement-agent/
-├── README.md               # this file
-├── SETUP.md                # step-by-step setup
-├── config.example.ps1      # copy to config.ps1 and fill in (config.ps1 is git-ignored)
-├── .gitignore
-└── scripts/
-    ├── pull.ps1            # Stage 1: fetch + pre-filter fresh posts
-    ├── curate-prompt.txt   # the brief for the LLM (edit the persona section)
-    ├── run-daily.ps1       # orchestrates pull -> curate -> email
-    └── register-task.ps1   # one-time: registers the scheduled task
-```
+- [`scripts/pull.ps1`](scripts/pull.ps1) — Stage 1: fetch + pre-filter fresh posts
+- [`scripts/curate-prompt.txt`](scripts/curate-prompt.txt) — the brief handed to the LLM (persona is editable)
+- [`scripts/run-daily.ps1`](scripts/run-daily.ps1) — orchestrates pull → curate → email → send
+- [`scripts/register-task.ps1`](scripts/register-task.ps1) — one-time: registers the scheduled task
+- [`config.example.ps1`](config.example.ps1) — the settings you'd fill in
+- [`SETUP.md`](SETUP.md) — step-by-step setup
